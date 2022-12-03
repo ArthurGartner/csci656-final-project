@@ -1,5 +1,32 @@
 {% extends "./base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Job Jump</h1>
+<div class="hero-section">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-6">
+                <div class="text-area">
+                    <div class="header">
+                        <h1><span id="jump-emphasis">JUMP</span> into your next job!</h1>
+                    </div>
+                    <div class="text-explain">
+                        <p>Tracking multiple job applications can be difficult and time-consuming. While rejections and
+                        recruitment ghosting can put us down, there is valuable information that can be gleaned from
+                        these experiences. JobJump aims to provide a platform that compiles job application stats such
+                        time to response, documents supplied, time of year and other quantifiable variables.
+                        </p>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-primary">Learn More</button>
+                        <button type="button" class="btn btn-primary">What's Planned?</button>
+                        <button type="button" class="btn btn-primary">Sign Up/Login</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <img class="hero-img" src="{% static 'main/media/desk.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

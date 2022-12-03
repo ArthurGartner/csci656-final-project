@@ -19,4 +19,7 @@ from main import views
 
 urlpatterns = [
     path('', views.page_index),
+    path('about/', views.page_about),
+    path('checklist/', views.page_checklist),
+    path('futurework/', views.page_future_work)
 ]
