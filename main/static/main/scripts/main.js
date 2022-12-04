@@ -30,3 +30,9 @@ function newUserSignup(e) {
     )
 
 }
+
+function userLogin(e) {
+    e.preventDefault();
+    let userEmail = e.currentTarget.userEmail.value;
+    let userPassword = e.currentTarget.userPassword.value;
+}
