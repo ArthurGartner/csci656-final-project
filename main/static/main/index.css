@@ -10,18 +10,26 @@
       justify-content: center; }
       .hero-section .main-content .row .text-area .header {
         margin-bottom: 20px; }
-        .hero-section .main-content .row .text-area .header #jump-emphasis {
+        .hero-section .main-content .row .text-area .header h1 #jump-emphasis {
           color: var(--systemPurple);
-          font-weight: bolder; }
+          font-weight: bolder;
+          font-size: 6rem; }
       .hero-section .main-content .row .text-area .text-explain {
         font-size: 1.1rem;
         margin-bottom: 20px; }
-      .hero-section .main-content .row .text-area .button-container .btn-plan {
-        background: var(--systemPurple); }
-      .hero-section .main-content .row .text-area .button-container .btn-login {
-        background: var(--systemBlue); }
-  .hero-section img {
-    max-width: 100%;
-    max-height: 100%; }
+      .hero-section .main-content .row .text-area .button-container {
+        color: var(--label); }
+        .hero-section .main-content .row .text-area .button-container .btn-learn {
+          background: var(--systemPink);
+          color: #FFFFFF; }
+        .hero-section .main-content .row .text-area .button-container .btn-login {
+          background: var(--systemPurple);
+          color: #FFFFFF; }
+    .hero-section .main-content .row .hero-img-area {
+      height: 70vh;
+      display: flex;
+      justify-content: center; }
+      .hero-section .main-content .row .hero-img-area .hero-img {
+        height: 100%; }
 
 /*# sourceMappingURL=index.css.map */

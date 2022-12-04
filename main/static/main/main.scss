@@ -5,8 +5,9 @@
   margin: 0;
   font-family: Inter;
   background: var(--systemBackground);
+  color: var(--label);
   transition: background .4s, color .4s;
-  scroll-behavior: smooth;
+  //scroll-behavior: smooth;
 }
 
 :root {
@@ -27,7 +28,7 @@
   --systemGreen: #34C759FF;
   --systemIndigo: #5856D6FF;
   --systemOrange: #FF9500FF;
-  --systemPink: #FF2D55FFF;
+  --systemPink: #FF2D55FF;
   --systemPurple: #AF52DEFF;
   --systemRed: #FF3B30FF;
   --systemTeal: #5AC8FAFF;
@@ -78,6 +79,5 @@
 
 body {
   background: var(--systemBackground);
-  color: var(--label);
 }
 
