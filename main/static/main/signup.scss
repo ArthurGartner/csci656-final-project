@@ -1,0 +1,24 @@
+.signup-view {
+  display: flex;
+  flex-direction: column;
+      align-items: center;
+    justify-content: center;
+
+  .signup-card {
+    margin-top: 5vh;
+    height: auto;
+    min-height: 300px;
+    width: 75%;
+
+    .card-title {
+      background: none;
+
+    }
+  }
+
+  .bottom-area {
+    img {
+      width: 30vw;
+    }
+  }
+}

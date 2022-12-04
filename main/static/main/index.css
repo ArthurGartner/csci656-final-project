@@ -21,7 +21,8 @@
         color: var(--label); }
         .hero-section .main-content .row .text-area .button-container .btn-learn {
           background: var(--systemPink);
-          color: #FFFFFF; }
+          color: #FFFFFF;
+          margin-right: 10px; }
         .hero-section .main-content .row .text-area .button-container .btn-login {
           background: var(--systemPurple);
           color: #FFFFFF; }

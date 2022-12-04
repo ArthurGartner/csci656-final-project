@@ -21,3 +21,15 @@ def page_checklist(request):
 def page_future_work(request):
     return render(request=request,
                   template_name="main/page_future_work.html")
+
+
+def page_login(request):
+    return render(request=request,
+                  template_name="main/page_login.html")
+
+
+def page_signup(request):
+    return render(request=request,
+                  template_name="main/page_signup.html")
+
+

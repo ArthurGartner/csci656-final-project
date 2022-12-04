@@ -81,3 +81,50 @@ body {
   background: var(--systemBackground);
 }
 
+.custom-btn {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 10px 20px;
+  background: green;
+  cursor: pointer;
+  text-decoration: none;
+
+
+  a {
+    background: transparent;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  &:hover {
+    opacity: .75;
+  }
+}
+
+.custom-card {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--secondarySystemGroupedBackground);
+}
+
+.textbox-icon {
+  font-size: 2.3rem;
+  margin-top: 0px;
+}
+
+.remove-background {
+  background: none;
+}
+
+.transparent-background {
+  background: red;
+}
+
+label {
+  background: none;
+}
+
+
+

@@ -29,9 +29,12 @@
 
         .button-container {
           color: var(--label);
+
+
           .btn-learn {
             background: var(--systemPink);
             color: #FFFFFF;
+            margin-right: 10px;
           }
 
           .btn-login {
