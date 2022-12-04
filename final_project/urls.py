@@ -23,5 +23,7 @@ urlpatterns = [
     path('checklist/', views.page_checklist),
     path('futurework/', views.page_future_work),
     path('login/', views.page_login),
-    path('signup/', views.page_signup)
+    path('signup/', views.page_signup),
+
+    path('new_user_signup/', views.ajax_new_user)
 ]
