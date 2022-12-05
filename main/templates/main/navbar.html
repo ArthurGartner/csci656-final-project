@@ -29,11 +29,16 @@
                     <i class="nav-icon theme-icon dark-theme-icon bi-moon-fill"></i>
                 </div>
             </div>
-            <div class="dropdown" style="float:right;">
+            <div class="dropdown">
                 <i class="nav-icon bi-person-circle"></i>
                 <div class="dropdown-content">
-                    <a href="/login">Login</a>
-                    <a href="/signup">Sign Up</a>
+                    {% if loggedin %}
+                        <a href="/myjobs">View My Jobs</a>
+                        <a href="/user_logout">Logout</a>
+                    {% else %}
+                        <a href="/login">Login</a>
+                        <a href="/signup">Sign Up</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

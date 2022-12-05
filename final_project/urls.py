@@ -24,6 +24,8 @@ urlpatterns = [
     path('futurework/', views.page_future_work),
     path('login/', views.page_login),
     path('signup/', views.page_signup),
-
-    path('new_user_signup/', views.ajax_new_user)
+    path('myjobs/', views.page_job_dashboard),
+    path('user_logout/', views.user_logout),
+    path('new_user_signup/', views.ajax_new_user),
+    path('user_login/', views.ajax_user_login),
 ]

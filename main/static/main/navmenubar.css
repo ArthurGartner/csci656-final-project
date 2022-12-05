@@ -16,8 +16,7 @@
     justify-content: center;
     position: relative; }
     .nav-menu .navbar-right .dropdown {
-      position: relative;
-      display: inline-block; }
+      position: relative; }
     .nav-menu .navbar-right .dropdown-content {
       position: absolute;
       display: none;

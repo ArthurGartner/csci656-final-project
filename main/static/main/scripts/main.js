@@ -35,4 +35,24 @@ function userLogin(e) {
     e.preventDefault();
     let userEmail = e.currentTarget.userEmail.value;
     let userPassword = e.currentTarget.userPassword.value;
+    console.log(userEmail);
+
+        $.ajax(
+        {
+            url: "/user_login/",
+            type: "GET",
+            data: {
+                "csrfmiddlewaretoken": e.currentTarget.csrfmiddlewaretoken.value,
+                "user_email": userEmail,
+                "user_password": userPassword,
+            },
+            dataType: "json",
+            success: function(response) {
+                window.location.href="/myjobs"
+                },
+            error: function(response) {
+                alert(response.responseJSON.error);
+            }
+        }
+    )
 }
