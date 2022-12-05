@@ -1,5 +1,94 @@
 {% extends "./base.html" %}
 
 {% block content %}
-<h1>MY JOBS</h1>
+<div class="jobs-view">
+<div class="control-bar">
+    <div class="return-page">
+        <div class="page-text hidden" onclick="returnToJobList()">
+            <i class="bi bi-caret-left-fill "></i>Return to List
+        </div>
+    </div>
+    <div class="list-options">
+        <i class="add-job-btn bi bi-plus-circle" onclick="addNewJob()"></i>
+    </div>
+</div>
+<div class="jobs-list-view">
+    <div class="no-jobs-added">
+        <h2>You aren't tracking any applications yet!</h2>
+        <h5>Click the <span>
+            <i class="bi bi-plus-circle"></i>
+        </span> in the top right corner to begin adding applications.</h5>
+    </div>
+</div>
+<div class="add-new-job-view hidden">
+    <div class="new-job-card custom-card">
+        <h3 class="card-title remove-background">
+            Add a new job application
+        </h3>
+        <h1></h1>
+        <form onsubmit="return newUserSignup(event)" class="remove-background mb-3">
+            {%  csrf_token %}
+            <div class="row remove-background mb-3">
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="jobPosition">Job Position</label>
+                        <input type="text" class="form-control" id="jobPosition" placeholder="Enter job position name">
+                    </div>
+                </div>
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" class="form-control" id="companyName" placeholder="Enter company name">
+                    </div>
+                </div>
+            </div>
+            <div class="row remove-background mb-3">
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="positionURL">Job Position URL</label>
+                        <input type="url" class="form-control" id="positionURL" placeholder="Enter job position URL">
+                    </div>
+                </div>
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="eventSelect">Select event</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Applied</option>
+                                <option>Recruiter reached out</option>
+                                <option>Interview</option>
+                                <option>Referred for position</option>
+                                <option>Rejected</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row remove-background mb-3">
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="eventDate">Job Position URL</label>
+                        <input type="date" class="form-control" id="eventDate" placeholder="Enter event date">
+                    </div>
+                </div>
+            </div>
+            <div class="row remove-background mb-3">
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="personalPositionNotes">Personal Notes</label>
+                        <textarea class="form-control" id="personalPositionNotes" rows="4" placeholder="Enter notes that only you can see."></textarea>
+                    </div>
+                </div>
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="publicPositionNotes">Public Notes</label>
+                        <textarea class="form-control" id="publicPositionNotes" rows="4" placeholder="Enter notes that everyone can see."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse mb-3 remove-background">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 {% endblock content %}

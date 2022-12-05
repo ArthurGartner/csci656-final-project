@@ -68,7 +68,6 @@ def ajax_new_user(request):
     return JsonResponse({})
 
 def ajax_user_login(request):
-    print("RUNNING");
     user_email = request.GET.get('user_email')
     user_password = request.GET.get('user_password')
 

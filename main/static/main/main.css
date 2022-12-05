@@ -110,4 +110,10 @@ body {
 label {
   background: none; }
 
+.hidden {
+  display: none; }
+
+.common-textbox {
+  height: 200px; }
+
 /*# sourceMappingURL=main.css.map */

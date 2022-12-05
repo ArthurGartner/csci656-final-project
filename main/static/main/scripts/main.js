@@ -56,3 +56,17 @@ function userLogin(e) {
         }
     )
 }
+
+function addNewJob() {
+    document.querySelector(".add-job-btn").classList.toggle("hidden");
+    document.querySelector(".page-text").classList.toggle("hidden");
+    document.querySelector(".add-new-job-view").classList.toggle("hidden");
+    document.querySelector(".jobs-list-view").classList.toggle("hidden");
+}
+
+function returnToJobList() {
+    document.querySelector(".add-job-btn").classList.toggle("hidden");
+    document.querySelector(".page-text").classList.toggle("hidden");
+    document.querySelector(".add-new-job-view").classList.toggle("hidden");
+    document.querySelector(".jobs-list-view").classList.toggle("hidden");
+}
