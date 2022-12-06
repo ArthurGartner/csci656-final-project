@@ -29,7 +29,6 @@ class Event(models.Model):
     event_date = models.DateField()
     personal_notes = models.CharField(max_length=500)
     public_notes = models.CharField(max_length=500)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     job_app = models.ForeignKey(JobApp, on_delete=models.CASCADE)
 
 

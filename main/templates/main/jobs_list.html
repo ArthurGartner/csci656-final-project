@@ -1,0 +1,31 @@
+   {% for job_app in job_apps %}
+        <div class="job-app-container custom-card">
+            <div class="job-app-top-row row">
+                <div class="job-info col-6 remove-background">
+                    <h3 class="remove-background">{{ job_app.job.position_name }} - {{ job_app.job.company.company_name }}</h3>
+                    <h5 class="remove-background">
+                        <a class="remove-background" href="{{ job_app.job.position_url }}">
+                            {{ job_app.job.position_url }}
+                        </a></h5>
+                    <h4 class="remove-background">Last Update: </h4>
+                </div>
+                <div class="app-options col-6 remove-background">
+                    <div class="d-flex flex-row-reverse remove-background">
+                        <h3 class="remove-background">
+                            <i class="delete-btn bi bi-trash-fill remove-background" onclick="delete_job({{ job_app.id }})"></i>
+                        </h3>
+                        <h3 class="mx-3 remove-background">
+                            <i class="edit-btn bi bi-pencil-fill remove-background"></i>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="no-jobs-added">
+            <h2>You aren't tracking any applications yet!</h2>
+            <h5>Click the <span>
+                <i class="bi bi-plus-circle"></i>
+            </span> in the top right corner to begin adding applications.</h5>
+        </div>
+    {% endfor %}

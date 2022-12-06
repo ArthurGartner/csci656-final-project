@@ -28,4 +28,7 @@ urlpatterns = [
     path('user_logout/', views.user_logout),
     path('new_user_signup/', views.ajax_new_user),
     path('user_login/', views.ajax_user_login),
+    path('save_job/', views.ajax_save_job),
+    path('delete_job/', views.ajax_delete_job),
+    path('refresh_jobs/', views.ajax_refresh_job_list)
 ]

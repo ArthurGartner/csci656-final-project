@@ -35,6 +35,34 @@
       i {
         color: var(--systemGreen);
       }
+      background: none;
+    }
+
+    .job-app-container {
+      width: 100%;
+      background: var(--secondarySystemBackground);
+      min-height: 15vh;
+      margin-bottom: 10px;
+
+      .job-app-top-row {
+        background: none;
+
+        .job-info {
+
+        }
+
+        .app-options {
+          .delete-btn {
+            color: var(--systemRed);
+            cursor: pointer;
+          }
+          .edit-btn {
+            color: var(--systemTeal);
+            cursor: pointer;
+          }
+        }
+
+      }
     }
   }
 

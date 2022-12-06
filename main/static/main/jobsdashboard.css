@@ -16,9 +16,23 @@
     .jobs-view .control-bar .list-options i:hover {
       opacity: .5; }
 .jobs-view .jobs-list-view .no-jobs-added {
-  text-align: center; }
+  text-align: center;
+  background: none; }
   .jobs-view .jobs-list-view .no-jobs-added i {
     color: var(--systemGreen); }
+.jobs-view .jobs-list-view .job-app-container {
+  width: 100%;
+  background: var(--secondarySystemBackground);
+  min-height: 15vh;
+  margin-bottom: 10px; }
+  .jobs-view .jobs-list-view .job-app-container .job-app-top-row {
+    background: none; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .delete-btn {
+      color: var(--systemRed);
+      cursor: pointer; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .edit-btn {
+      color: var(--systemTeal);
+      cursor: pointer; }
 .jobs-view .add-new-job-view .new-job-card {
   width: 100%;
   background: var(--secondarySystemBackground); }

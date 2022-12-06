@@ -12,13 +12,8 @@
         <i class="add-job-btn bi bi-plus-circle" onclick="addNewJob()"></i>
     </div>
 </div>
-<div class="jobs-list-view">
-    <div class="no-jobs-added">
-        <h2>You aren't tracking any applications yet!</h2>
-        <h5>Click the <span>
-            <i class="bi bi-plus-circle"></i>
-        </span> in the top right corner to begin adding applications.</h5>
-    </div>
+<div id="user-jobs-list" class="jobs-list-view">
+    {% include './jobs_list.html' %}
 </div>
 <div class="add-new-job-view hidden">
     <div class="new-job-card custom-card">
@@ -26,7 +21,7 @@
             Add a new job application
         </h3>
         <h1></h1>
-        <form onsubmit="return newUserSignup(event)" class="remove-background mb-3">
+        <form onsubmit="return saveJob(event)" class="remove-background mb-3">
             {%  csrf_token %}
             <div class="row remove-background mb-3">
                 <div class="col-6 remove-background">
@@ -52,13 +47,13 @@
                 <div class="col-6 remove-background">
                     <div class="form-group remove-background">
                         <label for="eventSelect">Select event</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Applied</option>
-                                <option>Recruiter reached out</option>
-                                <option>Interview</option>
-                                <option>Referred for position</option>
-                                <option>Rejected</option>
-                            </select>
+                        <select class="form-control" id="eventSelect">
+                            <option>Applied</option>
+                            <option>Recruiter reached out</option>
+                            <option>Interview</option>
+                            <option>Referred for position</option>
+                            <option>Rejected</option>
+                        </select>
                     </div>
                 </div>
             </div>

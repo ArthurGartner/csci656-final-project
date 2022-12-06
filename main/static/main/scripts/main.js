@@ -35,7 +35,6 @@ function userLogin(e) {
     e.preventDefault();
     let userEmail = e.currentTarget.userEmail.value;
     let userPassword = e.currentTarget.userPassword.value;
-    console.log(userEmail);
 
         $.ajax(
         {
@@ -70,3 +69,70 @@ function returnToJobList() {
     document.querySelector(".add-new-job-view").classList.toggle("hidden");
     document.querySelector(".jobs-list-view").classList.toggle("hidden");
 }
+
+function saveJob(e) {
+    e.preventDefault();
+    let jobName = e.currentTarget.jobPosition.value;
+    let companyName = e.currentTarget.companyName.value;
+    let positionURL = e.currentTarget.positionURL.value;
+    let eventSelect = e.currentTarget.eventSelect.value;
+    let eventDate = e.currentTarget.eventDate.value;
+    let personalPositionNotes = e.currentTarget.personalPositionNotes.value;
+    let publicPositionNotes = e.currentTarget.publicPositionNotes.value;
+
+        $.ajax(
+        {
+            url: "/save_job/",
+            type: "POST",
+            data: {
+                "csrfmiddlewaretoken": e.currentTarget.csrfmiddlewaretoken.value,
+                "job_name": jobName,
+                "company_name": companyName,
+                "position_url": positionURL,
+                "event_select": eventSelect,
+                "event_date": eventDate,
+                "personal_position_notes": personalPositionNotes,
+                "public_position_notes": publicPositionNotes,
+            },
+            dataType: "json",
+            success: function(response) {
+                    refresh_jobs_list();
+                    returnToJobList();
+                },
+            error: function(response) {
+                alert(response.responseJSON.error);
+            }
+        }
+    )
+}
+
+function refresh_jobs_list() {
+    $.ajax(
+        {
+            url: "/refresh_jobs/",
+            success: function(response) {
+                    $('#user-jobs-list').html(response);
+                },
+        }
+    )
+}
+
+function delete_job(id) {
+    $.ajax(
+        {
+            url: "/delete_job/",
+            type: "GET",
+            data: {
+                "job_app_id": id,
+            },
+            dataType: "json",
+            success: function(response) {
+                    refresh_jobs_list();
+                },
+            error: function(response) {
+                alert(response.responseJSON.error);
+            }
+        }
+    )
+}
+

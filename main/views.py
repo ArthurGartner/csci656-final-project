@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import redirect
+from main.models import *
 
 # Create your views here.
 
@@ -46,9 +47,14 @@ def page_job_dashboard(request):
     if not request.user.is_authenticated:
         return page_login(request)
 
+    user_job_events = Event.objects.filter(job_app__user=request.user)
+    user_job_apps = JobApp.objects.filter(user=request.user)
+
     return render(request=request,
                   template_name="main/page_jobs_dashboard.html",
-                  context={"loggedin": request.user.is_authenticated})
+                  context={"loggedin": request.user.is_authenticated,
+                           "job_apps": user_job_apps,
+                           "events": user_job_events})
 
 def ajax_new_user(request):
     user_first_name = request.POST.get('user_first_name')
@@ -81,6 +87,40 @@ def ajax_user_login(request):
 
     return JsonResponse({})
 
+def ajax_save_job(request):
+    job_name = request.POST.get('job_name')
+    company_name = request.POST.get('company_name')
+    position_url = request.POST.get('position_url')
+    event_select = request.POST.get('event_select')
+    event_date = request.POST.get('event_date')
+    personal_position_notes = request.POST.get('personal_position_notes')
+    public_position_notes = request.POST.get('public_position_notes')
+
+    company, created = Company.objects.get_or_create(company_name=company_name)
+
+    job = Job(position_name=job_name, position_url=position_url, company=company)
+    job.save()
+
+    job_app = JobApp(user=request.user, job=job)
+    job_app.save()
+
+    event = Event(event_type=event_select, event_date=event_date, personal_notes=personal_position_notes,
+                  public_notes=public_position_notes, job_app=job_app)
+
+    return JsonResponse({})
+
+def ajax_delete_job(request):
+    job_app_id = request.GET.get('job_app_id')
+    JobApp.objects.get(id=job_app_id).delete()
+    return JsonResponse({})
+
+def ajax_refresh_job_list(request):
+    user_job_events = Event.objects.filter(job_app__user=request.user)
+    user_job_apps = JobApp.objects.filter(user=request.user)
+    return render(request=request,
+                  template_name="main/jobs_list.html",
+                  context={"job_apps": user_job_apps,
+                           "events": user_job_events})
 
 def user_logout(request):
     logout(request)
