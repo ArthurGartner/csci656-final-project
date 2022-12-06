@@ -106,7 +106,45 @@ function saveJob(e) {
     )
 }
 
+function saveNewEvent(e, id) {
+    e.preventDefault();
+    let eventSelect = e.currentTarget.eventSelect.value;
+    let eventDate = e.currentTarget.eventDate.value;
+
+    $.ajax(
+        {
+            url: "/save_event/",
+            type: "POST",
+            data: {
+                "csrfmiddlewaretoken": e.currentTarget.csrfmiddlewaretoken.value,
+                "job_app_id": id,
+                "event_select": eventSelect,
+                "event_date": eventDate,
+            },
+            dataType: "json",
+            success: function(response) {
+                    toggle_app_view(id);
+                },
+            error: function(response) {
+                alert(response.responseJSON.error);
+            }
+        }
+    )
+}
+
+
 function refresh_jobs_list() {
+    $.ajax(
+        {
+            url: "/refresh_jobs/",
+            success: function(response) {
+                    $('#user-jobs-list').html(response);
+                },
+        }
+    )
+}
+
+function get_events() {
     $.ajax(
         {
             url: "/refresh_jobs/",
@@ -135,4 +173,12 @@ function delete_job(id) {
         }
     )
 }
+
+function toggle_app_view(id) {
+    document.querySelector(`.app-view-${id}`).classList.toggle("hidden");
+    document.querySelector(`.app-options-${id}`).classList.toggle("hidden");
+    document.querySelector(`.app-add-event-options-${id}`).classList.toggle("hidden");
+    document.querySelector(`.add-event-${id}`).classList.toggle("hidden");
+}
+
 

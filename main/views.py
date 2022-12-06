@@ -47,14 +47,25 @@ def page_job_dashboard(request):
     if not request.user.is_authenticated:
         return page_login(request)
 
-    user_job_events = Event.objects.filter(job_app__user=request.user)
+    # user_job_events = Event.objects.filter(job_app__user=request.user).group_by('')
+
+    # user_job_events = Event.objects.filter(job_app__user=request.user).order_by()
+
+    user_job_events = []
+
+    all_events = Event.objects.filter(job_app__user=request.user).order_by('-event_date')
+
     user_job_apps = JobApp.objects.filter(user=request.user)
+
+    # Needs to be re-written using better queries. Will not scale well
+    for user_app in user_job_apps:
+        user_job_events.append(Event.objects.filter(job_app=user_app).order_by('-event_date')[0])
 
     return render(request=request,
                   template_name="main/page_jobs_dashboard.html",
                   context={"loggedin": request.user.is_authenticated,
-                           "job_apps": user_job_apps,
-                           "events": user_job_events})
+                           "events": user_job_events,
+                           "all_events": all_events})
 
 def ajax_new_user(request):
     user_first_name = request.POST.get('user_first_name')
@@ -106,6 +117,18 @@ def ajax_save_job(request):
 
     event = Event(event_type=event_select, event_date=event_date, personal_notes=personal_position_notes,
                   public_notes=public_position_notes, job_app=job_app)
+    event.save()
+
+    return JsonResponse({})
+
+def ajax_save_event(request):
+    event_select = request.POST.get('event_select')
+    event_date = request.POST.get('event_date')
+    job_app_id = request.POST.get('job_app_id')
+
+    job_app = JobApp.objects.filter(id=job_app_id)[0]
+
+    Event(event_type=event_select, event_date=event_date, job_app=job_app).save()
 
     return JsonResponse({})
 
@@ -115,12 +138,22 @@ def ajax_delete_job(request):
     return JsonResponse({})
 
 def ajax_refresh_job_list(request):
-    user_job_events = Event.objects.filter(job_app__user=request.user)
+    user_job_events = []
+
+    all_events = Event.objects.filter(job_app__user=request.user).order_by('-event_date')
+
     user_job_apps = JobApp.objects.filter(user=request.user)
+
+    # Needs to be re-written using better queries. Will not scale well
+    for user_app in user_job_apps:
+        user_job_events.append(Event.objects.filter(job_app=user_app).order_by('-event_date')[0])
+
     return render(request=request,
                   template_name="main/jobs_list.html",
-                  context={"job_apps": user_job_apps,
-                           "events": user_job_events})
+                  context={"loggedin": request.user.is_authenticated,
+                           "events": user_job_events,
+                           "all_events": all_events})
+
 
 def user_logout(request):
     logout(request)

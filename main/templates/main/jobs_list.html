@@ -1,24 +1,74 @@
-   {% for job_app in job_apps %}
+   {% for job_event in events %}
         <div class="job-app-container custom-card">
             <div class="job-app-top-row row">
                 <div class="job-info col-6 remove-background">
-                    <h3 class="remove-background">{{ job_app.job.position_name }} - {{ job_app.job.company.company_name }}</h3>
-                    <h5 class="remove-background">
-                        <a class="remove-background" href="{{ job_app.job.position_url }}">
-                            {{ job_app.job.position_url }}
+                    <div class="app-info app-view-{{ job_event.id }} remove-background">
+                        <h3 class="remove-background">{{ job_event.job_app.job.position_name }} - {{ job_event.job_app.job.company.company_name }}</h3>
+                        <h5 class="remove-background">
+                        <i class="mr-2 healthy bi bi-circle-fill remove-background"></i>
+                        <a class="remove-background" href="{{ job_event.job_app.job.position_url }}">
+                            {{ job_event.job_app.job.position_url }}
                         </a></h5>
-                    <h4 class="remove-background">Last Update: </h4>
+                        {% for eventVal in all_events %}
+                            {% if job_event.job_app.id == eventVal.job_app_id %}
+                                <h4 class="remove-background">
+                                    {{ eventVal.event_date }} - {{ eventVal.event_type }}
+                                <h4>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
                 </div>
-                <div class="app-options col-6 remove-background">
-                    <div class="d-flex flex-row-reverse remove-background">
+                <div class="app-options app-options-{{ job_event.id }} col-6 remove-background">
+                    <div class="hidden d-flex flex-row-reverse remove-background">
                         <h3 class="remove-background">
-                            <i class="delete-btn bi bi-trash-fill remove-background" onclick="delete_job({{ job_app.id }})"></i>
+                            <i class="delete-btn bi bi-trash-fill remove-background" onclick="delete_job({{ job_event.job_app.id }})"></i>
                         </h3>
                         <h3 class="mx-3 remove-background">
                             <i class="edit-btn bi bi-pencil-fill remove-background"></i>
                         </h3>
+                        <h3 class="mx-2 remove-background">
+                            <i class="add-event-btn bi bi-plus-circle remove-background" onclick="toggle_app_view({{ job_event.id }})"></i>
+                        </h3>
                     </div>
                 </div>
+                <div class="app-options app-add-event-options-{{ job_event.id }} col-6 remove-background hidden">
+                    <div class="hidden d-flex flex-row-reverse remove-background">
+                        <h3 class="remove-background">
+                            <i class="delete-btn bi bi-x-circle-fill remove-background" onclick="toggle_app_view({{ job_event.id }})"></i>
+                        </h3>
+                        <button type="submit" form="new-event-save-form-{{ job_event.id }}" style="outline: none; border: none" class="new-event-submit-btn remove-background">
+                            <h3 class="mx-2 remove-background">
+                                <i class="add-event-btn bi-check-circle-fill remove-background"></i>
+                            </h3>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="add-new-event add-event-{{ job_event.id }} remove-background hidden">
+                <form id="new-event-save-form-{{ job_event.id }}" onsubmit="return saveNewEvent(event, {{ job_event.job_app.id }})" class="remove-background mb-3">
+                    {%  csrf_token %}
+                    <div class="row remove-background">
+                        <div class="col-6 remove-background">
+                            <div class="form-group remove-background">
+                                <label for="eventDate">Select Date</label>
+                                <input type="date" class="form-control" id="eventDate" placeholder="Enter event date">
+                            </div>
+                        </div>
+                        <div class="col-6 remove-background">
+                            <div class="form-group remove-background">
+                                <label for="eventSelect">Select event</label>
+                                <select class="form-control" id="eventSelect">
+                                    <option>Applied</option>
+                                    <option>Recruiter reached out</option>
+                                    <option>Interview</option>
+                                    <option>Referred for position</option>
+                                    <option>Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     {% empty %}
