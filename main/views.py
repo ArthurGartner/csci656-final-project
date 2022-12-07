@@ -1,10 +1,13 @@
+import os
+
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import redirect
 from main.models import *
-
+import boto3
+import json
 # Create your views here.
 
 
@@ -39,6 +42,7 @@ def page_login(request):
 
 
 def page_signup(request):
+    lambda_call()
     return render(request=request,
                   template_name="main/page_signup.html",
                   context={"loggedin": request.user.is_authenticated})
@@ -159,3 +163,18 @@ def user_logout(request):
     logout(request)
     return redirect('/login/')
 
+def lambda_call():
+    lambda_client = boto3.client('lambda', os.environ.get('AWS_DEFAULT_REGION'))
+
+    urls_to_check = 'https://google.com'
+    data = {
+        "urls":["https://google.com", "https://facebook.com"]
+    }
+
+    response = lambda_client.invoke(
+        FunctionName='jobjump_url_check',
+        Payload=json.dumps(data),
+    )
+
+    print(response['Payload'])
+    print(response['Payload'].read().decode("utf-8"))
