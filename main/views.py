@@ -166,7 +166,6 @@ def user_logout(request):
 
 
 def ajax_refresh_urls(request):
-    user_id = request.GET.get('user_id')
 
     user_job_apps = JobApp.objects.filter(user=request.user)
 

@@ -186,9 +186,6 @@ function checkURLs() {
         {
             url: "/check_urls/",
             type: "GET",
-            data: {
-                "user_id": user_id,
-            },
             dataType: "json",
             success: function(response) {
                     res_body = JSON.parse(response.body);
