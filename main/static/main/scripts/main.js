@@ -181,7 +181,7 @@ function toggle_app_view(id) {
     document.querySelector(`.add-event-${id}`).classList.toggle("hidden");
 }
 
-function checkURLs(user_id) {
+function checkURLs() {
         $.ajax(
         {
             url: "/check_urls/",
