@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from main import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.page_index),
+    path('about/', views.page_about),
+    path('checklist/', views.page_checklist),
+    path('futurework/', views.page_future_work),
+    path('login/', views.page_login),
+    path('signup/', views.page_signup),
+    path('myjobs/', views.page_job_dashboard),
+    path('user_logout/', views.user_logout),
+    path('new_user_signup/', views.ajax_new_user),
+    path('user_login/', views.ajax_user_login),
+    path('save_job/', views.ajax_save_job),
+    path('save_event/', views.ajax_save_event),
+    path('delete_job/', views.ajax_delete_job),
+    path('refresh_jobs/', views.ajax_refresh_job_list),
+    path('check_urls/', views.ajax_refresh_urls)
 ]

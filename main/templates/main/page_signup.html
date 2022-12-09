@@ -1,0 +1,44 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block content %}
+<div class="signup-view">
+    <div class="signup-card custom-card ">
+        <h3 class="card-title">
+            Sign Up
+        </h3>
+        <h1></h1>
+        <form onsubmit="return newUserSignup(event)" class="remove-background">
+            {%  csrf_token %}
+            <div class="row remove-background">
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="userFirstName">First Name</label>
+                        <input type="text" class="form-control" id="userFirstName" placeholder="Enter first name">
+                    </div>
+                </div>
+                <div class="col-6 remove-background">
+                    <div class="form-group remove-background">
+                        <label for="userLastName">Last Name</label>
+                        <input type="text" class="form-control" id="userLastName" placeholder="Enter last name">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group remove-background">
+                <label for="userEmail">Email address/Username</label>
+                <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+            </div>
+            <div class="form-group remove-background mb-3">
+                <label for="userPassword">Password</label>
+                <input type="password" class="form-control" id="userPassword" placeholder="Enter password">
+            </div>
+            <div class="d-flex flex-row-reverse remove-background">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <a href="/login">Already have an account?</a>
+    <div class="bottom-area">
+        <img src="{% static 'main/media/career_two_color.svg' %}" alt="">
+    </div>
+</div>
+{% endblock content %}

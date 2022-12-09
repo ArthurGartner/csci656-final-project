@@ -1,0 +1,52 @@
+.jobs-view .control-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5rem; }
+  .jobs-view .control-bar .return-page {
+    cursor: pointer; }
+    .jobs-view .control-bar .return-page .page-text {
+      color: var(--systemBlue); }
+    .jobs-view .control-bar .return-page i {
+      color: var(--systemBlue); }
+    .jobs-view .control-bar .return-page:hover {
+      opacity: .5; }
+  .jobs-view .control-bar .list-options .green-button {
+    color: var(--systemGreen); }
+  .jobs-view .control-bar .list-options i {
+    cursor: pointer; }
+    .jobs-view .control-bar .list-options i:hover {
+      opacity: .5; }
+.jobs-view .jobs-list-view .no-jobs-added {
+  text-align: center;
+  background: none; }
+  .jobs-view .jobs-list-view .no-jobs-added i {
+    color: var(--systemGreen); }
+.jobs-view .jobs-list-view .job-app-container {
+  width: 100%;
+  background: var(--secondarySystemBackground);
+  min-height: 15vh;
+  margin-bottom: 10px; }
+  .jobs-view .jobs-list-view .job-app-container .job-app-top-row {
+    background: none; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .new-event-submit-btn {
+      padding: 0;
+      border: none;
+      background: none;
+      outline: none; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .delete-btn {
+      color: var(--systemRed);
+      cursor: pointer; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .edit-btn {
+      color: var(--systemTeal);
+      cursor: pointer; }
+    .jobs-view .jobs-list-view .job-app-container .job-app-top-row .app-options .add-event-btn {
+      color: var(--systemGreen);
+      cursor: pointer; }
+.jobs-view .add-new-job-view .new-job-card {
+  width: 100%;
+  background: var(--secondarySystemBackground); }
+
+.healthy {
+  color: var(--systemGreen); }
+
+/*# sourceMappingURL=jobsdashboard.css.map */

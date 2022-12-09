@@ -1,0 +1,87 @@
+.nav-menu {
+  background: var(--secondarySystemBackground);
+  padding: 0px; }
+  .nav-menu .container, .nav-menu .nav-icon, .nav-menu .nav-app-name, .nav-menu .nav-options, .nav-menu .nav-link, .nav-menu .theme-toggle, .nav-menu .navbar-right, .nav-menu .theme-toggle-container {
+    background: var(--secondarySystemBackground);
+    transition: background .4s, color .4s; }
+  .nav-menu .nav-link {
+    font-size: 1.2rem;
+    color: var(--secondaryLabel); }
+  .nav-menu .nav-icon, .nav-menu .nav-app-name {
+    font-size: 2.2rem; }
+  .nav-menu .navbar-right {
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; }
+    .nav-menu .navbar-right .dropdown {
+      position: relative; }
+    .nav-menu .navbar-right .dropdown-content {
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      right: 0;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 20;
+      border-radius: 10px;
+      background: var(--secondarySystemBackground);
+      text-decoration: none; }
+      .nav-menu .navbar-right .dropdown-content a {
+        background: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-decoration: none;
+        padding-left: 5px;
+        color: var(--systemBlue); }
+        .nav-menu .navbar-right .dropdown-content a:hover {
+          opacity: .5; }
+    .nav-menu .navbar-right .dropdown:hover .dropdown-content {
+      display: flex; }
+  .nav-menu .nav-icon {
+    color: var(--systemBlue);
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; }
+  .nav-menu .theme-toggle {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    margin: 0 10px; }
+    .nav-menu .theme-toggle .theme-toggle-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .nav-menu .theme-toggle .theme-toggle-container .light-theme-icon {
+        background: transparent;
+        color: var(--systemYellow);
+        transition: transform 1s ease-in-out, color .4s ease-in-out, opacity 1s ease-in-out; }
+      .nav-menu .theme-toggle .theme-toggle-container .dark-theme-icon {
+        position: absolute;
+        background: transparent;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 1s ease-in-out, color .4s ease-in-out, opacity 1s ease-in-out;
+        color: var(--systemPurple); }
+  .nav-menu .animate-sun {
+    opacity: 0;
+    color: var(--systemOrange);
+    transform: translateY(100%) rotateZ(200deg); }
+  .nav-menu .animate-moon {
+    opacity: 0; }
+  @media (hover: hover) {
+    .nav-menu .theme-toggle:hover .light-theme-icon {
+      color: var(--systemOrange); }
+    .nav-menu .theme-toggle:hover .dark-theme-icon {
+      color: var(--moon-color); } }
+  .nav-menu .nav-app-name {
+    font-weight: 600;
+    padding: 0px;
+    color: var(--label); }
+
+/*# sourceMappingURL=navmenubar.css.map */

@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block content %}
+<div class="login-view">
+    <div class="login-card custom-card ">
+        <h3 class="card-title">
+            Login
+        </h3>
+        <h1></h1>
+        <form onsubmit="return userLogin(event)" class="remove-background">
+            {%  csrf_token %}
+            <div class="form-group remove-background">
+                <label for="userEmail">Email address/Username</label>
+                <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+            </div>
+            <div class="form-group remove-background mb-3">
+                <label for="userPassword">Password</label>
+                <input type="password" class="form-control" id="userPassword" placeholder="Enter password">
+            </div>
+            <div class="d-flex flex-row-reverse remove-background">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+    <a href="/signup">Need an account?</a>
+    <div class="bottom-area">
+        <img src="{% static 'main/media/Career_Isometric2.svg' %}" alt="">
+    </div>
+</div>
+{% endblock content %}

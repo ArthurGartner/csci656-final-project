@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Inter;
+  background: var(--systemBackground);
+  color: var(--label);
+  transition: background .4s, color .4s; }
+
+:root {
+  --systemBackground: #FFFFFFFF;
+  --secondarySystemBackground: #F2F2F7FF;
+  --tertiarySystemBackground: #FFFFFFFF;
+  --systemGroupedBackground: #F2F2F7FF;
+  --secondarySystemGroupedBackground: #F2F2F7FF;
+  --tertiarySystemGroupedBackground: #F2F2F7FF;
+  --label: #000000FF;
+  --secondaryLabel: #3C3C4399;
+  --tertiaryLabel: #3C3C434D;
+  --quaternaryLabel: #3C3C432E;
+  --placeholderText: #3C3C434D;
+  --separator: #3C3C434A;
+  --opaqueSeparator: #C6C6C8FF;
+  --systemBlue: #007AFFFF;
+  --systemGreen: #34C759FF;
+  --systemIndigo: #5856D6FF;
+  --systemOrange: #FF9500FF;
+  --systemPink: #FF2D55FF;
+  --systemPurple: #AF52DEFF;
+  --systemRed: #FF3B30FF;
+  --systemTeal: #5AC8FAFF;
+  --systemYellow: #FFCC00FF;
+  --systemGray: #8E8E93FF;
+  --systemGray2: #AEAEB2FF;
+  --systemGray3: #C7C7CCFF;
+  --systemGray4: #D1D1D6FF;
+  --systemGray5: #E5E5EAFF;
+  --systemGray6: #F2F2F7FF;
+  --moon-color: #0BDCD5FF; }
+
+.dark-mode {
+  --systemBackground: #000000FF;
+  --secondarySystemBackground: #1C1C1EFF;
+  --tertiarySystemBackground: #2C2C2EFF;
+  --systemGroupedBackground: #000000FF;
+  --secondarySystemGroupedBackground: #1C1C1EFF;
+  --tertiarySystemGroupedBackground: #2C2C2EFF;
+  --label: #FFFFFFFF;
+  --secondaryLabel: #EBEBF599;
+  --tertiaryLabel: #EBEBF54D;
+  --quaternaryLabel: #EBEBF52E;
+  --placeholderText: #EBEBF54D;
+  --separator: #54545899;
+  --opaqueSeparator: #38383AFF;
+  --systemBlue: #0A84FFFF;
+  --systemGreen: #30D158FF;
+  --systemIndigo: #5E5CE6FF;
+  --systemOrange: #FF9F0AFF;
+  --systemPink: #FF375FFF;
+  --systemPurple: #BF5AF2FF;
+  --systemRed: #FF453AFF;
+  --systemTeal: #64D2FFFF;
+  --systemYellow: #FFD60AFF;
+  --systemGray: #8E8E93FF;
+  --systemGray2: #636366FF;
+  --systemGray3: #48484AFF;
+  --systemGray4: #3A3A3CFF;
+  --systemGray5: #2C2C2EFF;
+  --systemGray6: #1C1C1EFF;
+  --moon-color: #0BDCD5FF; }
+
+.main-content {
+  position: relative;
+  z-index: 10; }
+
+body {
+  background: var(--systemBackground); }
+
+.custom-btn {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 10px 20px;
+  background: green;
+  cursor: pointer;
+  text-decoration: none; }
+  .custom-btn a {
+    background: transparent;
+    color: #FFFFFF;
+    text-decoration: none; }
+  .custom-btn:hover {
+    opacity: .75; }
+
+.custom-card {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+  background: var(--secondarySystemGroupedBackground); }
+
+.textbox-icon {
+  font-size: 2.3rem;
+  margin-top: 0px; }
+
+.remove-background {
+  background: none; }
+
+.transparent-background {
+  background: red; }
+
+label {
+  background: none; }
+
+.hidden {
+  display: none; }
+
+.common-textbox {
+  height: 200px; }
+
+.green-btn {
+  color: var(--systemGreen); }
+
+.healthy {
+  color: var(--systemGreen); }
+
+.not-healthy {
+  color: var(--systemRed); }
+
+/*# sourceMappingURL=main.css.map */
