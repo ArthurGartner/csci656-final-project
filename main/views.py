@@ -42,7 +42,6 @@ def page_login(request):
 
 
 def page_signup(request):
-    lambda_call()
     return render(request=request,
                   template_name="main/page_signup.html",
                   context={"loggedin": request.user.is_authenticated})
@@ -50,10 +49,6 @@ def page_signup(request):
 def page_job_dashboard(request):
     if not request.user.is_authenticated:
         return page_login(request)
-
-    # user_job_events = Event.objects.filter(job_app__user=request.user).group_by('')
-
-    # user_job_events = Event.objects.filter(job_app__user=request.user).order_by()
 
     user_job_events = []
 
@@ -63,13 +58,16 @@ def page_job_dashboard(request):
 
     # Needs to be re-written using better queries. Will not scale well
     for user_app in user_job_apps:
-        user_job_events.append(Event.objects.filter(job_app=user_app).order_by('-event_date')[0])
+        user_events = Event.objects.filter(job_app=user_app).order_by('-event_date')
+        if user_events:
+            user_job_events.append(user_events[0])
 
     return render(request=request,
                   template_name="main/page_jobs_dashboard.html",
                   context={"loggedin": request.user.is_authenticated,
                            "events": user_job_events,
-                           "all_events": all_events})
+                           "all_events": all_events,
+                           "user_id": request.user.id})
 
 def ajax_new_user(request):
     user_first_name = request.POST.get('user_first_name')
@@ -150,31 +148,50 @@ def ajax_refresh_job_list(request):
 
     # Needs to be re-written using better queries. Will not scale well
     for user_app in user_job_apps:
-        user_job_events.append(Event.objects.filter(job_app=user_app).order_by('-event_date')[0])
+        user_events = Event.objects.filter(job_app=user_app).order_by('-event_date')
+        if user_events:
+            user_job_events.append(user_events[0])
 
     return render(request=request,
                   template_name="main/jobs_list.html",
                   context={"loggedin": request.user.is_authenticated,
                            "events": user_job_events,
-                           "all_events": all_events})
+                           "all_events": all_events,
+                           "user_id": request.user.id})
 
 
 def user_logout(request):
     logout(request)
     return redirect('/login/')
 
-def lambda_call():
-    lambda_client = boto3.client('lambda', os.environ.get('AWS_DEFAULT_REGION'))
 
-    urls_to_check = 'https://google.com'
-    data = {
-        "urls":["https://google.com", "https://facebook.com"]
-    }
+def ajax_refresh_urls(request):
+    user_id = request.GET.get('user_id')
+
+    user_job_apps = JobApp.objects.filter(user=request.user)
+
+    data = {}
+
+    # Needs to be re-written using better queries. Will not scale well
+    for user_app in user_job_apps:
+        user_events = Event.objects.filter(job_app=user_app).order_by('-event_date')
+        if user_events:
+            data[user_events[0].id] = Job.objects.get(id=user_app.job_id).position_url
+
+    lambda_client = boto3.client('lambda', os.environ.get('AWS_DEFAULT_REGION'))
 
     response = lambda_client.invoke(
         FunctionName='jobjump_url_check',
         Payload=json.dumps(data),
     )
 
-    print(response['Payload'])
-    print(response['Payload'].read().decode("utf-8"))
+    # payload = response['Payload']
+    # json_response = payload.read()
+    # print(json_response)
+
+    response_payload = json.loads(response['Payload'].read().decode("utf-8"))
+
+    print(response_payload)
+
+
+    return JsonResponse({'body': json.dumps(response_payload)})

@@ -123,7 +123,7 @@ function saveNewEvent(e, id) {
             },
             dataType: "json",
             success: function(response) {
-                    toggle_app_view(id);
+                    refresh_jobs_list()
                 },
             error: function(response) {
                 alert(response.responseJSON.error);
@@ -180,5 +180,40 @@ function toggle_app_view(id) {
     document.querySelector(`.app-add-event-options-${id}`).classList.toggle("hidden");
     document.querySelector(`.add-event-${id}`).classList.toggle("hidden");
 }
+
+function checkURLs(user_id) {
+        $.ajax(
+        {
+            url: "/check_urls/",
+            type: "GET",
+            data: {
+                "user_id": user_id,
+            },
+            dataType: "json",
+            success: function(response) {
+                    res_body = JSON.parse(response.body);
+                    apply_urls_check_colors(res_body);
+                },
+            error: function(response) {
+                alert("ERROR");
+            }
+        }
+    )
+}
+
+function apply_urls_check_colors(url_results) {
+    console.log(url_results);
+    json_body = JSON.parse(url_results);
+    for (let key in json_body) {
+        let val = json_body[key];
+        if (val < 400) {
+            document.querySelector(`.url-status-${key}`).classList.toggle("healthy");
+        } else {
+            document.querySelector(`.url-status-${key}`).classList.toggle("not-healthy");
+        }
+    }
+}
+
+
 
 

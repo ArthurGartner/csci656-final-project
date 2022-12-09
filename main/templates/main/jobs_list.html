@@ -5,7 +5,7 @@
                     <div class="app-info app-view-{{ job_event.id }} remove-background">
                         <h3 class="remove-background">{{ job_event.job_app.job.position_name }} - {{ job_event.job_app.job.company.company_name }}</h3>
                         <h5 class="remove-background">
-                        <i class="mr-2 healthy bi bi-circle-fill remove-background"></i>
+                        <i class="mr-2 url-status-{{ job_event.id }} bi bi-circle-fill remove-background"></i>
                         <a class="remove-background" href="{{ job_event.job_app.job.position_url }}">
                             {{ job_event.job_app.job.position_url }}
                         </a></h5>

@@ -10,8 +10,9 @@
       color: var(--systemBlue); }
     .jobs-view .control-bar .return-page:hover {
       opacity: .5; }
+  .jobs-view .control-bar .list-options .green-button {
+    color: var(--systemGreen); }
   .jobs-view .control-bar .list-options i {
-    color: var(--systemGreen);
     cursor: pointer; }
     .jobs-view .control-bar .list-options i:hover {
       opacity: .5; }

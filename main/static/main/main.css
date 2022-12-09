@@ -116,4 +116,13 @@ label {
 .common-textbox {
   height: 200px; }
 
+.green-btn {
+  color: var(--systemGreen); }
+
+.healthy {
+  color: var(--systemGreen); }
+
+.not-healthy {
+  color: var(--systemRed); }
+
 /*# sourceMappingURL=main.css.map */

@@ -18,8 +18,10 @@
       }
     }
     .list-options {
-      i {
+      .green-button {
         color: var(--systemGreen);
+      }
+      i {
         cursor: pointer;
 
         &:hover {
