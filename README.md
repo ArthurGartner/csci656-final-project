@@ -17,8 +17,8 @@ A Heroku Postgres database was deployed and connected to the JobJump application
 ## :white_check_mark: Atleast 1 Lambda function should be used that is called using Boto3 within Django
 A lambda function is utilized to quickly query a list of URLs and return whether or not the URL is still valid. This is executed using Boto3 to invoke the lambda function which returns a json body that is transferred to the frontend to display the appropriate color (GREEN==Healthy, RED== Not Healthy) next to the URL.
 
-## :white_check_mark: Ajax should be utilized for communication from the front-end to the backe-end
-Ajax is used to discreetly update HTML DOM elements on the front-end based on database updates, user interactions, or lambda invocations and responses.
+## :white_check_mark: AJAX should be utilized for communication from the front-end to the back-end
+AJAX is used to discreetly update HTML DOM elements on the front-end based on database updates, user interactions, or lambda invocations and responses.
 
 ## :white_check_mark: Unit tests should be implemented using Pytest
 Pytest is used for several unit tests checking the navigation URL responses and the restriction of the myjobs page from users who are not authenticated.
